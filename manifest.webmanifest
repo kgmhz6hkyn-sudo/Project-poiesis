@@ -1,0 +1,10 @@
+{
+  "name": "Project Poiesis — osobni kulturni kurator",
+  "short_name": "POIESIS",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070707",
+  "theme_color": "#070707",
+  "description": "Osobni kulturni kurator i kulturni dnevnik.",
+  "icons": [{"src":"assets/daily-art.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
