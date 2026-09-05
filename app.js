@@ -1,1 +1,1 @@
-(function(){const s=document.createElement('script');s.src='core.js?v=5';s.onload=()=>{const d=document.createElement('script');d.src='daily.js?v=5';document.body.appendChild(d)};document.body.appendChild(s)})();
+(function(){const s=document.createElement('script');s.src='core.js?v=6';s.onload=()=>{const d=document.createElement('script');d.src='daily.js?v=6';d.onload=()=>{const f=document.createElement('script');f.src='links-fix.js?v=6';document.body.appendChild(f)};document.body.appendChild(d)};document.body.appendChild(s)})();
