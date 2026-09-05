@@ -1,5 +1,5 @@
-const CACHE='poiesis-v3';
-const ASSETS=['./','./index.html','./app.js','./manifest.webmanifest','./assets/daily-art.svg','./assets/hamlet.svg','./assets/performance.svg','./assets/exhibition.svg','./assets/exhibition2.svg','./assets/concert.svg','./assets/rothko.svg','./assets/stage.svg'];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
-self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
-self.addEventListener('fetch',e=>{const req=e.request;const url=new URL(req.url);if(req.mode==='navigate'||(url.origin===location.origin&&(url.pathname.endsWith('/app.js')||url.pathname.endsWith('/index.html')))){e.respondWith(fetch(req).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(req,copy));return r}).catch(()=>caches.match(req)));return}e.respondWith(caches.match(req).then(r=>r||fetch(req).then(net=>{if(req.method==='GET'&&url.origin===location.origin){const copy=net.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return net})))});
+const CACHE='poiesis-v4';
+const ASSETS=['./','./index.html','./app.js','./manifest.webmanifest','./assets/daily-art.svg'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
+self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));
