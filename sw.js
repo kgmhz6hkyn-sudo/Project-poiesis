@@ -1,4 +1,4 @@
-const CACHE='poiesis-v8';
+const CACHE='poiesis-v9';
 const ASSETS=['./','./index.html','./app.js','./manifest.webmanifest','./core.js','./daily.js','./links-fix.js','./explore-ui.js','./curation.js'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
